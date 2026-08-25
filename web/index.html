@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soft Comp</title>
+<meta name="description" content="Five agents run a software company — one writes the code, another runs it, and failures go back for a fix.">
+<link rel="icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="icon.svg" alt="" class="logo">
+    <div>
+      <h1>Soft Comp</h1>
+      <p class="tagline">Five agents run a software company. One of them runs the code.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="brief">
+    <label for="task">The brief</label>
+    <div class="row">
+      <input id="task" type="text" autocomplete="off" maxlength="400"
+             placeholder="Write a program that finds the longest word in a sentence">
+      <button id="go" type="button">Build it</button>
+    </div>
+    <div class="examples" id="examples">
+      <button type="button">Check whether a number is prime, and show it on 1 to 30</button>
+      <button type="button">Count how often each word appears in a paragraph</button>
+      <button type="button">Convert Roman numerals to integers, with a few tests</button>
+    </div>
+    <p class="status" id="status"></p>
+  </section>
+
+  <section class="pipeline" id="pipeline" hidden aria-label="Progress through the five agents">
+    <div class="stage" data-stage="manager"><span class="pip"></span><span class="name">Manager</span></div>
+    <div class="stage" data-stage="research"><span class="pip"></span><span class="name">Research</span></div>
+    <div class="stage" data-stage="developer"><span class="pip"></span><span class="name">Developer</span></div>
+    <div class="stage" data-stage="tester"><span class="pip"></span><span class="name">Tester</span></div>
+    <div class="stage" data-stage="documentation"><span class="pip"></span><span class="name">Docs</span></div>
+  </section>
+
+  <div class="columns">
+
+    <section class="notes-col">
+      <div class="card" id="card-manager" hidden>
+        <h2>Manager</h2>
+        <p class="prose" id="out-manager"></p>
+      </div>
+      <div class="card" id="card-research" hidden>
+        <h2>Research</h2>
+        <div class="prose" id="out-research"></div>
+      </div>
+      <div class="card" id="card-docs" hidden>
+        <h2>Documentation</h2>
+        <div class="prose" id="out-docs"></div>
+      </div>
+    </section>
+
+    <section class="work-col">
+      <div class="card file" id="card-code" hidden>
+        <div class="file-head">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="filename" id="filename">main.py</span>
+          <span class="round-tag" id="round-tag"></span>
+        </div>
+        <pre class="code"><code id="out-code"></code></pre>
+      </div>
+
+      <div class="card terminal" id="card-test" hidden>
+        <div class="file-head">
+          <span class="prompt">$</span>
+          <span class="filename" id="run-cmd">python main.py</span>
+          <span class="verdict" id="verdict"></span>
+        </div>
+        <pre class="output" id="out-test"></pre>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="colophon">
+    LangGraph over Gemini. The code it writes really is executed &mdash; in a
+    throwaway directory, with the server&rsquo;s environment stripped out and a
+    ten second limit. Not a full sandbox;
+    <a href="https://github.com/jawadhasuna/Soft-Comp#running-code-a-model-wrote" target="_blank" rel="noopener">the README says exactly what that does and does not stop</a>.
+    <a href="https://github.com/jawadhasuna/Soft-Comp" target="_blank" rel="noopener">Source</a>.
+  </p>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

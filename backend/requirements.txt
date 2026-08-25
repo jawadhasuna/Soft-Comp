@@ -1,0 +1,4 @@
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+langgraph==1.2.11
+langchain-google-genai==4.3.5

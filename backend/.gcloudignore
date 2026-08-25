@@ -1,0 +1,6 @@
+.testvenv/
+__pycache__/
+*.pyc
+.env
+.env.local.test
+README.md
